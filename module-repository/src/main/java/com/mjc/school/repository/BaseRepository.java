@@ -1,16 +1,11 @@
 package com.mjc.school.repository;
 
 import com.mjc.school.repository.model.BaseEntity;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public interface BaseRepository<T extends BaseEntity<K> , K> {
+public interface BaseRepository<T extends BaseEntity<K>, K> {
 
     List<T> readAll();
 

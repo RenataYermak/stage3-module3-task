@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public abstract class TagMapper {
 
+    @Mapping(target = "news", ignore = true)
     public abstract Tag mapTagRequestDtoToTag(TagRequestDto tagDtoRequest);
 
     public abstract TagResponseDto mapTagToTagResponseDto(Tag tagModel);

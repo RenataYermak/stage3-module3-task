@@ -1,5 +1,6 @@
 package com.mjc.school.service.mapper;
 
+import com.mjc.school.repository.model.Author;
 import com.mjc.school.repository.model.News;
 import com.mjc.school.service.dto.AuthorResponseDto;
 import com.mjc.school.service.dto.NewsRequestDto;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-17T19:10:15+0300",
+    date = "2023-05-17T20:00:01+0300",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.2.jar, environment: Java 17.0.5 (JetBrains s.r.o.)"
 )
 @Component
@@ -26,6 +27,7 @@ public class NewsMapperImpl extends NewsMapper {
 
         News news = new News();
 
+        news.setAuthor( newsRequestDtoToAuthor( dto ) );
         news.setId( dto.id() );
         news.setTitle( dto.title() );
         news.setContent( dto.content() );
@@ -71,5 +73,17 @@ public class NewsMapperImpl extends NewsMapper {
         }
 
         return list;
+    }
+
+    protected Author newsRequestDtoToAuthor(NewsRequestDto newsRequestDto) {
+        if ( newsRequestDto == null ) {
+            return null;
+        }
+
+        Author author = new Author();
+
+        author.setId( newsRequestDto.authorId() );
+
+        return author;
     }
 }

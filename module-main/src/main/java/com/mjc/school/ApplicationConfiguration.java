@@ -8,4 +8,5 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan("com.mjc.school.*")
 public class ApplicationConfiguration {
+
 }

@@ -21,6 +21,7 @@ public abstract class NewsMapper {
 
     @Mapping(target = "createDate", ignore = true)
     @Mapping(target = "lastUpdateDate", ignore = true)
+    @Mapping(target = "author.id", source = "authorId")
     public abstract News mapNewsRequestDtoToNews(NewsRequestDto dto);
 
     @Mapping(target = "tagIds", ignore = true)

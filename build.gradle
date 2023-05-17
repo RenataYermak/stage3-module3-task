@@ -25,10 +25,10 @@ subprojects {
         implementation "org.aspectj:aspectjweaver:$aspectjVersion"
         implementation "org.projectlombok:lombok:$lombokVersion"
         implementation "org.postgresql:postgresql:$postgresVersion"
+        implementation "org.hibernate:hibernate-core:5.6.15.Final"
+
         testImplementation "org.assertj:assertj-core:$assertjVersion"
-
-
-
+        testImplementation 'com.h2database:h2:2.1.214'
         testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit-junit5:$archUnitVersion"
