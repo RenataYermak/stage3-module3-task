@@ -24,7 +24,9 @@ subprojects {
         implementation "org.springframework.boot:spring-boot-starter-aop:$aopVersion"
         implementation "org.aspectj:aspectjweaver:$aspectjVersion"
         implementation "org.projectlombok:lombok:$lombokVersion"
-        implementation 'org.postgresql:postgresql:42.6.0'
+        implementation "org.postgresql:postgresql:$postgresVersion"
+        testImplementation "org.assertj:assertj-core:$assertjVersion"
+
 
 
         testImplementation "org.springframework:spring-test:$springVersion"
