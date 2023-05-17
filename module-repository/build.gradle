@@ -1,0 +1,4 @@
+dependencies {
+    implementation "org.projectlombok:lombok:$lombokVersion"
+    testImplementation 'org.testcontainers:postgresql:1.16.3'
+}

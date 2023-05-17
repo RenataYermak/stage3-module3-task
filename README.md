@@ -21,10 +21,10 @@ The recommended timeline for the whole module is 2 weeks.
 Your **Spring core** solution. Do not delete or move basic interfaces for `repository`, `service`
 and `controller` layers:
 
-- `com.mjc.school.repository.model.BaseEntity`
-- `com.mjc.school.repository.BaseRepository`
-- `com.mjc.school.service.BaseService`
-- `com.mjc.school.controller.BaseController`
+- `com.mjc.school.model.com.mjc.school.repository.BaseEntity`
+- `com.mjc.school.com.mjc.school.repository.BaseRepository`
+- `com.mjc.school.com.mjc.school.service.BaseService`
+- `com.mjc.school.com.mjc.school.controller.BaseController`
 
 Use `org.springframework.boot:spring-boot-starter-data-jpa` dependency for
 your solution, but with only one restriction: **it's prohibited to use CRUD repositories**, because the main goal of
