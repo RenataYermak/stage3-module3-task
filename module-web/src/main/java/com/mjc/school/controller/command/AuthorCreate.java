@@ -20,8 +20,8 @@ public class AuthorCreate extends AuthorBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.AUTHOR_NAME);
-        String name = scanner.nextLine();
-        AuthorRequestDto authorDtoRequest = new AuthorRequestDto(null, name);
+        var name = scanner.nextLine();
+        var authorDtoRequest = new AuthorRequestDto(null, name);
         System.out.println(authorController.create(authorDtoRequest));
         return true;
     }

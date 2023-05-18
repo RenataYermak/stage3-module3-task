@@ -21,7 +21,7 @@ public class AuthorGetById extends AuthorBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.AUTHOR_ID);
-        long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         System.out.println(authorController.readById(id));
         return true;
     }

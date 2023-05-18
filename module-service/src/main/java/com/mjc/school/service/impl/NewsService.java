@@ -1,10 +1,8 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.repository.impl.AuthorRepository;
-import com.mjc.school.repository.impl.NewsRepository;
-import com.mjc.school.repository.impl.TagRepository;
+import com.mjc.school.repository.BaseRepository;
+import com.mjc.school.repository.model.Author;
 import com.mjc.school.repository.model.News;
-import com.mjc.school.repository.model.Tag;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsRequestDto;
 import com.mjc.school.service.dto.NewsResponseDto;
@@ -17,19 +15,18 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NewsService implements BaseService<NewsRequestDto, NewsResponseDto, Long> {
 
-    private final NewsRepository newsRepository;
-    private final AuthorRepository authorRepository;
+    private final BaseRepository<Author, Long> authorRepository;
+    private final BaseRepository<News, Long> newsRepository;
     private final NewsMapper mapper;
 
     @Autowired
-    public NewsService(NewsRepository newsRepository, AuthorRepository authorRepository, NewsMapper mapper) {
-        this.newsRepository = newsRepository;
+    public NewsService(BaseRepository<Author, Long> authorRepository, BaseRepository<News, Long> newsRepository, NewsMapper mapper) {
         this.authorRepository = authorRepository;
+        this.newsRepository = newsRepository;
         this.mapper = mapper;
     }
 
@@ -42,7 +39,7 @@ public class NewsService implements BaseService<NewsRequestDto, NewsResponseDto,
     @Override
     public NewsResponseDto readById(Long id) {
         if (newsRepository.existById(id)) {
-            Optional<News> optionalNews = newsRepository.readById(id);
+            var optionalNews = newsRepository.readById(id);
             return mapper.mapNewsToNewsResponseDto(optionalNews.get());
         } else {
             throw new NotFoundException(String.format("News with ID %d not found.", id));
@@ -53,11 +50,11 @@ public class NewsService implements BaseService<NewsRequestDto, NewsResponseDto,
     @Override
     public NewsResponseDto create(NewsRequestDto newsRequestDto) {
         if (authorRepository.existById(newsRequestDto.authorId())) {
-            News news = mapper.mapNewsRequestDtoToNews(newsRequestDto);
-            LocalDateTime localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+            var news = mapper.mapNewsRequestDtoToNews(newsRequestDto);
+            var localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
             news.setCreateDate(localDateTime);
             news.setLastUpdateDate(localDateTime);
-            News savedNews = newsRepository.create(news);
+            var savedNews = newsRepository.create(news);
             return mapper.mapNewsToNewsResponseDto(savedNews);
         } else {
             throw new NotFoundException(
@@ -70,10 +67,10 @@ public class NewsService implements BaseService<NewsRequestDto, NewsResponseDto,
     public NewsResponseDto update(NewsRequestDto newsRequestDto) {
         if (authorRepository.existById(newsRequestDto.authorId())) {
             if (newsRepository.existById(newsRequestDto.id())) {
-                News news = mapper.mapNewsRequestDtoToNews(newsRequestDto);
-                LocalDateTime updatedDate = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+                var news = mapper.mapNewsRequestDtoToNews(newsRequestDto);
+                var updatedDate = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
                 news.setLastUpdateDate(updatedDate);
-                News savedNews = newsRepository.update(news);
+                var savedNews = newsRepository.update(news);
                 return mapper.mapNewsToNewsResponseDto(savedNews);
             } else {
                 throw new NotFoundException(String.format("News with ID %d not found.", newsRequestDto.id()));

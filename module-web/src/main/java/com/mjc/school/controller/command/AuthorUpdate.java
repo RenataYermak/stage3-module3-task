@@ -21,10 +21,10 @@ public class AuthorUpdate extends AuthorBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.AUTHOR_ID);
-        long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         System.out.println(Constant.AUTHOR_NAME);
-        String name = scanner.nextLine();
-        AuthorRequestDto authorDtoRequest = new AuthorRequestDto(id, name);
+        var name = scanner.nextLine();
+        var authorDtoRequest = new AuthorRequestDto(id, name);
         System.out.println(authorController.update(authorDtoRequest));
         return true;
     }

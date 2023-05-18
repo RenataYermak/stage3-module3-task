@@ -19,7 +19,7 @@ public class TagGetById extends TagBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.NEWS_ID);
-        Long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         System.out.println(tagController.readById(id));
         return true;
     }

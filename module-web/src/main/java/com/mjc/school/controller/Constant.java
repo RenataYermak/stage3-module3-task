@@ -2,8 +2,6 @@ package com.mjc.school.controller;
 
 public class Constant {
 
-    public static String ENTER_NUMBER_OF_OPERATION = "Enter number of operation";
-
     public static String NEWS_TITLE = "Enter news title: ";
     public static String NEWS_CONTENT = "Enter news content: ";
     public static String NEWS_AUTHOR_ID = "Enter author ID: ";
@@ -15,8 +13,6 @@ public class Constant {
 
     public static String AUTHOR_ID = "Enter author id: ";
     public static String AUTHOR_NAME = "Enter author name: ";
-
-    public static String WRONG_NUMBER_OF_OPERATION = "Operation not found";
 
     public static Integer FIRST_OPERATION = 0;
     public static Integer LAST_OPERATION = 15;

@@ -1,6 +1,6 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.repository.impl.TagRepository;
+import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.model.Tag;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.TagRequestDto;
@@ -16,12 +16,12 @@ import java.util.List;
 @Service
 public class TagService implements BaseService<TagRequestDto, TagResponseDto, Long> {
 
-    private final TagRepository tagRepository;
+    private final BaseRepository<Tag, Long> tagRepository;
     private final TagMapper mapper;
 
     @Autowired
-    public TagService(TagRepository tagRepository, TagMapper mapper) {
-        this.tagRepository = tagRepository;
+    public TagService(BaseRepository<Tag, Long> repository, TagMapper mapper) {
+        this.tagRepository = repository;
         this.mapper = mapper;
     }
 
@@ -44,8 +44,8 @@ public class TagService implements BaseService<TagRequestDto, TagResponseDto, Lo
     @Validate(value = "checkTag")
     @Override
     public TagResponseDto create(TagRequestDto tagRequestDto) {
-        Tag tag = mapper.mapTagRequestDtoToTag(tagRequestDto);
-        Tag createdTag = tagRepository.create(tag);
+        var tag = mapper.mapTagRequestDtoToTag(tagRequestDto);
+        var createdTag = tagRepository.create(tag);
         return mapper.mapTagToTagResponseDto(createdTag);
     }
 
@@ -53,7 +53,7 @@ public class TagService implements BaseService<TagRequestDto, TagResponseDto, Lo
     @Override
     public TagResponseDto update(TagRequestDto tagRequestDto) {
         if (tagRepository.existById(tagRequestDto.id())) {
-            Tag tag = mapper.mapTagRequestDtoToTag(tagRequestDto);
+            var tag = mapper.mapTagRequestDtoToTag(tagRequestDto);
             tag.setName(tagRequestDto.name());
             return mapper.mapTagToTagResponseDto(tagRepository.update(tag));
         } else {

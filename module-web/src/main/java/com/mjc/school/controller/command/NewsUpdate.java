@@ -20,16 +20,16 @@ public class NewsUpdate extends NewsBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.NEWS_ID);
-        String newsId = scanner.nextLine();
+        var newsId = scanner.nextLine();
         System.out.println(Constant.NEWS_TITLE);
-        String title = scanner.nextLine();
+        var title = scanner.nextLine();
         System.out.println(Constant.NEWS_CONTENT);
-        String content = scanner.nextLine();
+        var content = scanner.nextLine();
         System.out.println(Constant.NEWS_AUTHOR_ID);
-        String authorId = scanner.nextLine();
+        var authorId = scanner.nextLine();
         System.out.println(Constant.NEWS_TAG_ID);
-        String tagId = scanner.nextLine();
-        NewsRequestDto newsDtoRequest = new NewsRequestDto(Long.parseLong(newsId), title, content, Long.parseLong(authorId), Long.parseLong(tagId));
+        var tagId = scanner.nextLine();
+        var newsDtoRequest = new NewsRequestDto(Long.parseLong(newsId), title, content, Long.parseLong(authorId), Long.parseLong(tagId));
         System.out.println(newsController.update(newsDtoRequest));
         return true;
     }

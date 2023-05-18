@@ -21,10 +21,10 @@ public class CommandHelper {
     private final TagController tagController;
 
     @Autowired
-    public CommandHelper(NewsController newsController, AuthorController authorController,TagController tagController) {
+    public CommandHelper(NewsController newsController, AuthorController authorController, TagController tagController) {
         this.newsController = newsController;
         this.authorController = authorController;
-        this.tagController= tagController;
+        this.tagController = tagController;
     }
 
     public Command getCommand(Scanner scanner, Integer operationNumber) {

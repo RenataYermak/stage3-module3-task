@@ -20,7 +20,7 @@ public class TagDelete extends TagBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.TAG_ID);
-        long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         tagController.deleteById(id);
         return true;
     }

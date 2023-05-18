@@ -25,10 +25,10 @@ public class ValidationAspect {
 
     @Before(value = "@annotation(com.mjc.school.service.validation.annotation.Validate)&&args(id)")
     public void checkNewsId(JoinPoint joinPoint, Long id) {
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        var methodSignature = (MethodSignature) joinPoint.getSignature();
         methodSignature.getMethod();
-        Validate validate = methodSignature.getMethod().getAnnotation(Validate.class);
-        String value = validate.value();
+        var validate = methodSignature.getMethod().getAnnotation(Validate.class);
+        var value = validate.value();
         if (value.equals("checkNewsId")) {
             validateId(id, NEWS_ID);
         }
@@ -36,10 +36,10 @@ public class ValidationAspect {
 
     @Before(value = "@annotation(com.mjc.school.service.validation.annotation.Validate)&&args(newsRequestDto)")
     public void checkNewsRequestDto(JoinPoint joinPoint, NewsRequestDto newsRequestDto) throws ValidationException {
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        var methodSignature = (MethodSignature) joinPoint.getSignature();
         methodSignature.getMethod();
-        Validate validate = methodSignature.getMethod().getAnnotation(Validate.class);
-        String value = validate.value();
+        var validate = methodSignature.getMethod().getAnnotation(Validate.class);
+        var value = validate.value();
         if (value.equals("checkNews")) {
             validateString(newsRequestDto.title(), NEWS_ID, NEWS_TITLE_MIN, NEWS_TITLE_MAX);
             validateString(newsRequestDto.content(), NEWS_ID, NEWS_CONTENT_MIN, NEWS_CONTENT_MAX);

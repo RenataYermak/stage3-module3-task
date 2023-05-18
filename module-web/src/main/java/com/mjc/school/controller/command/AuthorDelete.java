@@ -20,7 +20,7 @@ public class AuthorDelete extends AuthorBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.AUTHOR_ID);
-        long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         authorController.deleteById(id);
         return true;
     }

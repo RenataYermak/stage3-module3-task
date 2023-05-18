@@ -1,6 +1,6 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.repository.impl.AuthorRepository;
+import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.model.Author;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.AuthorRequestDto;
@@ -18,12 +18,12 @@ import java.util.List;
 @Service
 public class AuthorService implements BaseService<AuthorRequestDto, AuthorResponseDto, Long> {
 
-    private final AuthorRepository authorRepository;
+    private final BaseRepository<Author, Long> authorRepository;
     private final AuthorMapper mapper;
 
     @Autowired
-    public AuthorService(AuthorRepository authorRepository,AuthorMapper mapper) {
-        this.authorRepository = authorRepository;
+    public AuthorService(BaseRepository<Author, Long> repository, AuthorMapper mapper) {
+        this.authorRepository = repository;
         this.mapper = mapper;
     }
 
@@ -46,11 +46,11 @@ public class AuthorService implements BaseService<AuthorRequestDto, AuthorRespon
     @Validate(value = "checkAuthor")
     @Override
     public AuthorResponseDto create(AuthorRequestDto authorRequestDto) {
-        Author author = mapper.mapAuthorRequestDtoToAuthor(authorRequestDto);
-        LocalDateTime localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        var author = mapper.mapAuthorRequestDtoToAuthor(authorRequestDto);
+        var localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
         author.setCreateDate(localDateTime);
         author.setLastUpdateDate(localDateTime);
-        Author createdAuthor = authorRepository.create(author);
+        var createdAuthor = authorRepository.create(author);
         return mapper.mapAuthorToAuthorResponseDto(createdAuthor);
     }
 
@@ -58,8 +58,8 @@ public class AuthorService implements BaseService<AuthorRequestDto, AuthorRespon
     @Override
     public AuthorResponseDto update(AuthorRequestDto authorRequestDto) {
         if (authorRepository.existById(authorRequestDto.id())) {
-            Author author = mapper.mapAuthorRequestDtoToAuthor(authorRequestDto);
-            LocalDateTime localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+            var author = mapper.mapAuthorRequestDtoToAuthor(authorRequestDto);
+            var localDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
             author.setName(authorRequestDto.name());
             author.setLastUpdateDate(localDateTime);
             return mapper.mapAuthorToAuthorResponseDto(authorRepository.update(author));

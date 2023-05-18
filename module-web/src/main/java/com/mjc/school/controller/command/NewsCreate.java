@@ -24,10 +24,10 @@ public class NewsCreate extends NewsBaseCommand implements Command {
         System.out.println(Constant.NEWS_CONTENT);
         String content = scanner.nextLine();
         System.out.println(Constant.NEWS_AUTHOR_ID);
-        long author_id = Long.parseLong(scanner.nextLine());
+        var author_id = Long.parseLong(scanner.nextLine());
         System.out.println(Constant.NEWS_TAG_ID);
-        long tagId = Long.parseLong(scanner.nextLine());
-        NewsRequestDto newsDtoRequest = new NewsRequestDto(null, title, content, author_id, tagId);
+        var tagId = Long.parseLong(scanner.nextLine());
+        var newsDtoRequest = new NewsRequestDto(null, title, content, author_id, tagId);
         System.out.println(newsController.create(newsDtoRequest));
         return true;
     }

@@ -19,7 +19,7 @@ public class NewsDelete extends NewsBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.NEWS_ID);
-        long id = Long.parseLong(scanner.nextLine());
+        var id = Long.parseLong(scanner.nextLine());
         newsController.deleteById(id);
         return true;
     }

@@ -20,8 +20,8 @@ public class TagCreate extends TagBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.TAG_NAME);
-        String name = scanner.nextLine();
-        TagRequestDto tagDtoRequest = new TagRequestDto(null, name);
+        var name = scanner.nextLine();
+        var tagDtoRequest = new TagRequestDto(null, name);
         System.out.println(tagController.create(tagDtoRequest));
         return true;
     }

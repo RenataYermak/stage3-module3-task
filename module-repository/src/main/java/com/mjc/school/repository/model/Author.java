@@ -35,7 +35,10 @@ public class Author implements BaseEntity<Long> {
     @Column(length = 15)
     private String name;
 
+    @Column(name = "create_date")
     private LocalDateTime createDate;
+
+    @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
 
     @Builder.Default

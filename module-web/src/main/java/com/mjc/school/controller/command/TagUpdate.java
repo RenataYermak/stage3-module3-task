@@ -20,10 +20,10 @@ public class TagUpdate extends TagBaseCommand implements Command {
     @Override
     public boolean execute() {
         System.out.println(Constant.TAG_ID);
-        String tagId = scanner.nextLine();
+        var tagId = scanner.nextLine();
         System.out.println(Constant.TAG_NAME);
-        String name = scanner.nextLine();
-        TagRequestDto tagDtoRequest = new TagRequestDto(Long.parseLong(tagId), name);
+        var name = scanner.nextLine();
+        var tagDtoRequest = new TagRequestDto(Long.parseLong(tagId), name);
         System.out.println(tagController.update(tagDtoRequest));
         return true;
     }

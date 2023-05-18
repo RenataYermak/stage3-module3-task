@@ -25,8 +25,10 @@ subprojects {
         implementation "org.aspectj:aspectjweaver:$aspectjVersion"
         implementation "org.projectlombok:lombok:$lombokVersion"
         implementation "org.postgresql:postgresql:$postgresVersion"
+        implementation "javax.xml.bind:jaxb-api:$javaxXmlBindVersion"
         implementation 'org.hibernate:hibernate-core:5.6.15.Final'
         implementation 'com.vladmihalcea:hibernate-types-52:2.12.1'
+        implementation 'org.testcontainers:postgresql:1.17.6'
 
         testImplementation "org.assertj:assertj-core:$assertjVersion"
         testImplementation "org.springframework:spring-test:$springVersion"

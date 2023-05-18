@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +43,10 @@ public class News implements BaseEntity<Long> {
     @Column(length = 255)
     private String content;
 
+    @Column(name = "create_date")
     private LocalDateTime createDate;
 
+    @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -51,7 +54,7 @@ public class News implements BaseEntity<Long> {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "news_tag",
+            name = "tag_news",
             joinColumns = @JoinColumn(name = "news_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
