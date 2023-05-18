@@ -1,6 +1,7 @@
 package com.mjc.school.controller.impl;
 
 import com.mjc.school.controller.BaseController;
+import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.AuthorRequestDto;
 import com.mjc.school.service.dto.AuthorResponseDto;
 import com.mjc.school.service.impl.AuthorService;
@@ -12,11 +13,11 @@ import java.util.List;
 @Controller()
 public class AuthorController implements BaseController<AuthorRequestDto, AuthorResponseDto, Long> {
 
-    private final AuthorService authorService;
+    private final BaseService<AuthorRequestDto, AuthorResponseDto, Long> authorService;
 
     @Autowired
-    public AuthorController(AuthorService authorService) {
-        this.authorService = authorService;
+    public AuthorController(BaseService<AuthorRequestDto, AuthorResponseDto, Long> service) {
+        this.authorService = service;
     }
 
     @Override
