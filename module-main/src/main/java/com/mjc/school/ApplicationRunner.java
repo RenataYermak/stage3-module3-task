@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.persistence.EntityManager;
 
 @SpringBootApplication
-@ComponentScan("com.mjc.school.*")
 public class ApplicationRunner {
     public static void main(String[] args) {
 
