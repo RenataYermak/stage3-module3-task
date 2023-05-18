@@ -6,10 +6,11 @@ import com.mjc.school.service.dto.TagResponseDto;
 import com.mjc.school.service.impl.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-@Component
+@Controller
 public class TagController implements BaseController<TagRequestDto, TagResponseDto, Long> {
 
     private final TagService tagService;

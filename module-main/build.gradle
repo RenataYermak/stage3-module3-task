@@ -6,6 +6,9 @@ mainClassName = 'com.mjc.school.Main'
 
 dependencies {
     implementation project(':module-web')
+    implementation project(':module-repository')
+    implementation project(':module-service')
+
 }
 
 run {
