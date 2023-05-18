@@ -2,7 +2,7 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'com.mjc.school.Main'
+mainClassName = 'com.mjc.school.ApplicationRunner'
 
 dependencies {
     implementation project(':module-repository')

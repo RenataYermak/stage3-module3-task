@@ -17,7 +17,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableAutoConfiguration
 @ComponentScan("com.mjc.school.*")
-public class HibernateConfiguration {
+public class ApplicationConfiguration {
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
