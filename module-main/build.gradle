@@ -5,7 +5,6 @@ plugins {
 mainClassName = 'com.mjc.school.ApplicationRunner'
 
 dependencies {
-    implementation project(':module-repository')
     implementation project(':module-service')
     implementation project(':module-web')
 }
