@@ -29,6 +29,7 @@ subprojects {
         implementation "org.testcontainers:postgresql:$testContainerVersion"
 
         testImplementation "org.assertj:assertj-core:$assertjVersion"
+        testImplementation "com.h2database:h2:$h2Version"
         testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit-junit5:$archUnitVersion"
