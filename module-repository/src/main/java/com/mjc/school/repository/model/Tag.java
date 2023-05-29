@@ -37,6 +37,14 @@ public class Tag implements BaseEntity<Long>{
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     private List<News> news = new ArrayList<>();
 
+    public Tag(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Tag() {
+    }
+
     @Override
     public void setId(Long id) {
         this.id = id;

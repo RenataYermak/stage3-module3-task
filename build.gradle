@@ -30,6 +30,8 @@ subprojects {
 
         testImplementation "org.assertj:assertj-core:$assertjVersion"
         testImplementation "com.h2database:h2:$h2Version"
+        testImplementation 'org.mockito:mockito-core:3.9.0'
+        implementation 'org.mockito:mockito-junit-jupiter:3.8.0'
         testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit-junit5:$archUnitVersion"

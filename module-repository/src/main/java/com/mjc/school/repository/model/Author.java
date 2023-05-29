@@ -45,6 +45,14 @@ public class Author implements BaseEntity<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = CascadeType.REMOVE)
     private List<News> news = new ArrayList<>();
 
+    public Author(){
+    }
+
+    public Author(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public void setId(Long id) {
         this.id = id;

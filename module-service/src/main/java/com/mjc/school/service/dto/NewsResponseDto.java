@@ -14,6 +14,6 @@ public record NewsResponseDto(Long id,
                               LocalDateTime createDate,
                               LocalDateTime lastUpdateDate,
                               AuthorResponseDto authorDto,
-                              List<Long> tagIds ) {
+                              Long tagId ) {
 
 }

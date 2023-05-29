@@ -24,7 +24,7 @@ public abstract class NewsMapper {
     @Mapping(target = "author.id", source = "authorId")
     public abstract News mapNewsRequestDtoToNews(NewsRequestDto dto);
 
-    @Mapping(target = "tagIds", ignore = true)
+    @Mapping(target = "tagId", ignore = true)
     @Mapping(target = "authorDto", expression =
             "java(news.getAuthor().getId() != null ? authorService.readById(news.getAuthor().getId()) : null)")
     public abstract NewsResponseDto mapNewsToNewsResponseDto(News news);

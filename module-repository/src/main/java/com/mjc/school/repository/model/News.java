@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +36,7 @@ public class News implements BaseEntity<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column( length = 30)
+    @Column(length = 30)
     private String title;
 
     @Column(length = 255)
@@ -59,6 +58,18 @@ public class News implements BaseEntity<Long> {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags = new ArrayList<>();
+
+    public News() {
+    }
+
+    public News(Long id, String title, String content, LocalDateTime createDate, LocalDateTime lastUpdateDate, Author author) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createDate = createDate;
+        this.lastUpdateDate = lastUpdateDate;
+        this.author = author;
+    }
 
     @Override
     public void setId(Long id) {
